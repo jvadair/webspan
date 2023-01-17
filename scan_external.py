@@ -11,6 +11,8 @@ from threading import Thread
 
 scan_wk(WK_SP, WK_NP, WK_OF)  # Disable if using your own txt file
 
+print("Running external scan... Press ctrl+c to cancel.")
+
 INPUT_FILE = "pages_found.txt"  # A newline-separated text file
 OUTPUT_FILE = "wwwsearch.txt"
 MAX_THREADS = 20  # DO NOT SET TO -1
