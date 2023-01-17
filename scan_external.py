@@ -6,10 +6,10 @@ Multithreaded scraper for finding external links on websites using BeatifulSoup
 
 import requests
 from bs4 import BeautifulSoup
-from wk_find_external_links import main as scan_wk, get_base_url
+from wk_find_external_links import main as scan_wk, get_base_url, OUTPUT_FILE as WK_OF, STARTING_PAGE as WK_SP, NUM_PAGES as WK_NP
 from threading import Thread
 
-scan_wk()  # Disable if using your own txt file
+scan_wk(WK_SP, WK_NP, WK_OF)  # Disable if using your own txt file
 
 INPUT_FILE = "pages_found.txt"  # A newline-separated text file
 OUTPUT_FILE = "wwwsearch.txt"
