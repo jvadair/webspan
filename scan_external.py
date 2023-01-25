@@ -18,6 +18,18 @@ OUTPUT_FILE = "wwwsearch.txt"
 MAX_THREADS = 20  # DO NOT SET TO -1
 
 
+def strip_params(url):
+    return url.split('?', maxsplit=1)[0]
+
+
+def check(url):
+    if url.startswith('mailto:'): return False
+    elif url.startswith('?'): return False
+    elif not url.startswith('http'): return False
+
+    return True
+
+
 def worker(site, results):
     found = []
     # -- Setup --
@@ -33,8 +45,8 @@ def worker(site, results):
     urls = list(dict.fromkeys(urls))  # Remove duplicates
     urls = [get_base_url(url) for url in urls]
     for url in urls:
-        if url not in results:
-            results.append(url)
+        if url not in results and check(url):
+            results.append(strip_params(url))
 
 def main():
     open_threads = []
